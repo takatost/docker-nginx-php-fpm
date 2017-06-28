@@ -245,6 +245,12 @@ RUN wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${FILEBE
 # Add Filebeat config
 ADD filebeat/filebeat.yml /etc/filebeat/filebeat.yml
 
+# Modify Timezone
+ENV TZ Asia/Shanghai
+RUN apk add --no-cache tzdata && \
+    cp /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
+    apk del tzdata
+    
 # Add Cron
 COPY scripts/schedule.sh /
 COPY cron/nginx /etc/cron.d/
