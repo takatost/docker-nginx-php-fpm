@@ -200,6 +200,10 @@ RUN echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repo
     php -r "unlink('composer-setup.php');"  && \
     composer global require "hirak/prestissimo:^0.3" && \
     apk del gcc musl-dev linux-headers libffi-dev augeas-dev python-dev
+    
+# Fix iconv bug
+RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing gnu-libiconv
+ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 
 # Add supervisord conf
 RUN mkdir -p /etc/supervisor/conf.d
