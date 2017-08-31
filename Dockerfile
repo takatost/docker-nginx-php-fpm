@@ -254,6 +254,11 @@ ENV TZ Asia/Shanghai
 RUN apk add --no-cache tzdata && \
     cp /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
     
+# Add Vim
+RUN apk add --no-cache vim && \
+    rm -f /usr/bin/vi && \
+    cp /usr/bin/vim /usr/bin/vi
+    
 # Add Cron
 COPY scripts/schedule.sh /
 COPY cron/nginx /etc/cron.d/
