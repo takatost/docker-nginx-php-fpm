@@ -160,6 +160,7 @@ RUN echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repo
     apk update && \
     apk add --no-cache bash \
     openssh-client \
+    openssl \
     wget \
     supervisor \
     curl \
