@@ -248,7 +248,8 @@ RUN wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${FILEBE
     cd filebeat-* && \
     cp filebeat /bin && \
     cd /tmp && \
-    rm -rf filebeat*
+    rm -rf filebeat && \
+    mkdir /var/log/filebeat
 
 # Add Filebeat config
 ADD filebeat/filebeat.yml /etc/filebeat/filebeat.yml
