@@ -63,9 +63,6 @@ if [ ! -z "$PUID" ]; then
   deluser nginx
   addgroup -g ${PGID} nginx
   adduser -D -S -h /var/cache/nginx -s /sbin/nologin -G nginx -u ${PUID} nginx
-else
-  # Always chown webroot for better mounting
-  chown -Rf nginx.nginx /data/www
 fi
 
 mkdir -p /etc/default
