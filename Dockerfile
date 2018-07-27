@@ -135,11 +135,7 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 	&& apk add --no-cache --virtual .nginx-rundeps $runDeps \
 	&& apk del .build-deps \
 	&& apk del .gettext \
-	&& mv /tmp/envsubst /usr/local/bin/ \
-	\
-	# forward request and error logs to docker log collector
-	&& ln -sf /dev/stdout /var/log/nginx/access.log \
-	&& ln -sf /dev/stderr /var/log/nginx/error.log
+	&& mv /tmp/envsubst /usr/local/bin/
 
 # Copy our nginx config
 RUN rm -Rf /etc/nginx/nginx.conf
