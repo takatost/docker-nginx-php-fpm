@@ -211,7 +211,8 @@ ADD supervisor/supervisord.conf /etc/supervisord.conf
 ADD supervisor/conf.d/ /etc/supervisor/conf.d/
 
 # tweak php-fpm config
-RUN echo "cgi.fix_pathinfo=0" > ${php_vars} &&\
+RUN mkdir -p /var/log/php-fpm &&\
+	echo "cgi.fix_pathinfo=0" > ${php_vars} &&\
     echo "upload_max_filesize = 100M"  >> ${php_vars} &&\
     echo "post_max_size = 100M"  >> ${php_vars} &&\
     echo "variables_order = \"EGPCS\""  >> ${php_vars} && \
