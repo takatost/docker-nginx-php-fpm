@@ -9,6 +9,9 @@ ENV php_vars /usr/local/etc/php/conf.d/docker-vars.ini
 # Install bcmath
 RUN docker-php-ext-install bcmath
 
+# Enable pecl extensions
+RUN pecl install -f grpc && docker-php-ext-enable grpc
+
 # Nginx
 ENV NGINX_VERSION 1.13.1
 
