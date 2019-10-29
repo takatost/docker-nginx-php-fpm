@@ -1,4 +1,4 @@
-FROM php:7.1.8-fpm-alpine
+FROM php:7.3.11-fpm-alpine
 
 MAINTAINER JohnWang <wangjiajun@vchangyi.com>
 
