@@ -169,6 +169,7 @@ RUN echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repo
     pecl install -f grpc && \
     docker-php-ext-enable grpc && \
     #curl iconv session
+    pecl install -f mcrypt-1.0.2 && \
     docker-php-ext-install pdo_mysql pdo_sqlite mysqli mcrypt gd exif intl xsl json soap dom zip opcache bcmath && \
     docker-php-source delete && \
     mkdir -p /etc/nginx && \
